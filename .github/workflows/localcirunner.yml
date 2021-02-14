@@ -1,0 +1,15 @@
+name: CI
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: DoSomething
+      run: |
+        wget https://github.com/fwilhe2/localcirunner/releases/download/0.1.0/localcirunner-linux
+        sudo mv localcirunner-linux /usr/local/bin/lcr
+        sudo chmod +x /usr/local/bin/lcr
+        lcr .github/workflows/main.yml
